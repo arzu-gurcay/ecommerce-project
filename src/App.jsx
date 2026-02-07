@@ -1,19 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from "react-router-dom";
+import Header from "./layout/Header";
+import PageContent from "./layout/PageContent";
+import Footer from "./layout/Footer";
+import HomePage from "./pages/HomePage";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function Placeholder({ title }) {
   return (
-    
-        
-      <p className="text-3xl text-red-500">
-        Click on the Vite and React logos to learn more
-      </p>
-  
-  )
+    <div className="mx-auto w-full max-w-6xl px-4 py-10">
+      <h1 className="text-xl font-semibold">{title}</h1>
+    </div>
+  );
 }
 
-export default App
+export default function App() {
+  return (
+    <div className="flex min-h-screen flex-col bg-white">
+      <Header />
+      <PageContent>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/shop" element={<Placeholder title="Shop" />} />
+          <Route path="/about" element={<Placeholder title="About" />} />
+          <Route path="/contact" element={<Placeholder title="Contact" />} />
+        </Routes>
+      </PageContent>
+      <Footer />
+    </div>
+  );
+}
