@@ -24,6 +24,14 @@ import arabaImg from "../assets/araba.jpg";
 import semsiyeImg from "../assets/semsiye.jpg";
 import hero2Img from "../assets/hero2.png";
 
+import { BsAlarm, BsGraphUp } from "react-icons/bs";
+
+
+
+
+
+
+
 export default function HomePage() {
     const heroSlides = [
     {
@@ -107,7 +115,7 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="w-full">
+    <div className="w-screen">
       {/* HERO SLIDER */}
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
@@ -122,15 +130,17 @@ export default function HomePage() {
             {/* SLIDE 1: Background style */}
             {s.variant === "bg" ? (
               <section
-                className="relative w-full"
+                className="relative w-screen h-[950px]"
                 style={{
                   backgroundImage: `url(${s.image})`,
                   backgroundSize: "cover",
-                  backgroundPosition: "right center",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
                 }}
               >
                 {/* gradient overlay (renk bozmasın diye siyah ton) */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/25 via-black/10 to-transparent" />
+                <div className="absolute left-0 top-0 h-full w-1/2 bg-gradient-to-r from-black/40 to-transparent" />
+
 
                 <div className="relative mx-auto flex max-w-6xl flex-col items-center px-4 py-12 text-center text-white lg:min-h-[650px] lg:items-start lg:justify-center lg:py-0 lg:text-left">
                   <p className="text-xs font-semibold tracking-widest opacity-90">{s.tag}</p>
@@ -145,47 +155,55 @@ export default function HomePage() {
               </section>
             ) : (
               /* SLIDE 2: Card style (senin paylaştığın gibi kutulu) */
-              <section className="w-full bg-white">
-                <div className="mx-auto max-w-6xl px-4 py-10 lg:py-14">
-                  <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-sky-200 via-sky-100 to-emerald-200">
-                    {/* Dekoratif baloncuklar */}
-                    <div className="absolute right-20 top-6 h-14 w-14 rounded-full bg-white/90" />
-                    <div className="absolute right-10 top-28 h-7 w-7 rounded-full bg-white/90" />
-                    <div className="absolute right-40 bottom-10 h-3 w-3 rounded-full bg-purple-400" />
-                    <div className="absolute left-10 bottom-14 h-3 w-3 rounded-full bg-purple-400" />
+              <section className="relative w-screen h-[950px]">
 
-                    <div className="flex flex-col items-center justify-between gap-8 px-8 py-10 lg:min-h-[420px] lg:flex-row lg:px-14 lg:py-0">
-                      {/* TEXT (solda, dikey ortalı) */}
-                      <div className="flex w-full flex-col items-center text-center lg:w-1/2 lg:items-start lg:justify-center lg:text-left">
-                        <p className="text-xs font-semibold tracking-widest text-slate-700/70">{s.tag}</p>
-                        <h2 className="mt-3 text-3xl font-extrabold tracking-wide text-slate-800 lg:text-5xl">
-                          {s.title}
-                        </h2>
-                        <p className="mt-4 max-w-md text-sm text-slate-700 lg:text-base">{s.desc}</p>
-                        <button className="mt-8 rounded-md bg-sky-600 px-10 py-3 text-sm font-semibold text-white hover:opacity-90">
-                          {s.cta}
-                        </button>
-                      </div>
+  {/* ✅ dışarıda max-w yok => tam genişlik */}
+  <div className="w-full">
+    {/* ✅ kart: ilk slider gibi boyut */}
+    <div className="relative h-[950px] w-full overflow-hidden rounded-none bg-gradient-to-r from-[#9fc2d4] to-[#98e1c2]">
+      {/* DEKOR */}
+      
+      <div className="pointer-events-none absolute right-90 top-32 h-3 w-3 rounded-full bg-purple-400" />
+      <div className="pointer-events-none absolute right-120 top-12 h-14 w-14 rounded-full bg-white/90" />
 
-                      {/* IMAGE (sağda büyük) */}
-                     <div className="relative w-full lg:w-1/2">
-  {/* Büyük beyaz yay arkada kalsın */}
-  <div className="pointer-events-none absolute -right-24 -top-24 z-0 h-[420px] w-[420px] rounded-full bg-white/90 lg:h-[520px] lg:w-[520px]" />
+      <div className="pointer-events-none absolute -right-5 -top-5 h-[740px] w-[740px] rounded-full bg-white" />
 
-  {/* Resim önde olsun */}
-  <div className="relative z-10 mx-auto h-[260px] w-full max-w-[520px] lg:h-[420px] lg:max-w-[560px]">
-    <img
-      src={s.image}
-      alt="hero2"
-      className="h-full w-full object-contain object-right"
-    />
+      {/* ✅ BURASI ÖNEMLİ: KARTA YÜKSEKLİK VERDİK */}
+      <div className="mx-auto grid h-[520px] w-full max-w-6xl grid-cols-1 items-center gap-10 px-8 lg:grid-cols-2 lg:px-14">
+
+        {/* LEFT TEXT (dikey ortalı) */}
+        <div className="relative mx-auto flex max-w-6xl flex-col items-center px-4 py-12 text-center text-white lg:min-h-[650px] lg:items-start lg:justify-center lg:py-0 lg:text-left">
+          <p className="text-xs font-semibold tracking-widest opacity-90">
+            {s.tag}
+          </p>
+
+          <h2 className="mt-3 text-5xl font-extrabold tracking-wide lg:text-6xl">
+            {s.title}
+          </h2>
+
+          <p className="mt-4 max-w-md text-sm opacity-95 lg:text-base">
+            {s.desc}
+          </p>
+
+          <button className="mt-8 w-fit rounded-md bg-sky-600 px-10 py-3 text-sm font-semibold text-white hover:opacity-90">
+            {s.cta}
+          </button>
+        </div>
+
+        {/* RIGHT IMAGE (dikey ortalı) */}
+        <div className="flex h-full items-right justify-end">
+          <img
+            src={s.image}
+            alt="hero"
+            className="absolute bottom-0 right-1 h-[920px] w-auto object-contain lg:h-[820px]"
+          />
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
-                    </div>
-                  </div>
-                </div>
-              </section>
+
             )}
           </SwiperSlide>
         ))}
@@ -278,130 +296,179 @@ export default function HomePage() {
       </section>
 
       {/* GREEN BANNER (inline, component yok) */}
-   <section className="w-full bg-emerald-800">
-  <div className="mx-auto w-full max-w-6xl px-4">
-    <div className="relative flex min-h-[520px] items-center">
+   <section className="w-full">
+      <Swiper
+        modules={[Navigation, Pagination]}
+        navigation
+        pagination={{ clickable: true }}
+        className="h-[520px]"
+      >
+        <SwiperSlide>
+  <div className="relative flex h-[520px] items-end bg-emerald-700">
+    <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center px-6 md:grid-cols-2">
 
       {/* LEFT TEXT */}
-      <div className="relative z-10 flex w-full flex-col gap-4 text-white
-                      lg:w-1/2 lg:translate-x-32">
-        <p className="text-xs font-semibold tracking-widest opacity-90">
+      <div className="text-white pb-24">
+        <p className="text-xs tracking-widest opacity-80">
           SUMMER 2020
         </p>
 
-        <h3 className="text-[56px] font-extrabold leading-tight">
+        <h2 className="mt-4 text-5xl font-bold leading-tight">
           Vita Classic <br /> Product
-        </h3>
+        </h2>
 
-        <p className="max-w-sm text-sm opacity-90">
-          We know how large objects will act, We know <br />
-          how are objects will act, We know
+        <p className="mt-6 max-w-[320px] text-sm opacity-90">
+          We know how large objects will act. We know how are objects will act.
         </p>
 
-        <div className="mt-2 flex items-center gap-4">
-          <p className="text-base font-extrabold">$16.48</p>
+        <div className="mt-8 flex items-center gap-6">
+          <span className="text-lg font-bold">$16.48</span>
 
-          <button className="rounded-md bg-emerald-500 px-6 py-3 text-xs font-semibold text-white hover:opacity-90">
+          <button className="rounded bg-green-500 px-6 py-3 text-sm font-semibold text-white">
             ADD TO CART
           </button>
         </div>
       </div>
 
       {/* RIGHT IMAGE */}
-      <div className="absolute right-0 top-0 h-full w-1/2">
+      <div className="flex justify-end">
         <img
           src={bannerImg}
-          alt="Vita Classic"
-          className="h-full w-full object-contain object-right"
+          alt="model"
+          className="h-[440px] object-contain"
         />
       </div>
 
     </div>
   </div>
-</section>
+</SwiperSlide>
+
+
+        {/* ikinci slide (istersen kopyala) */}
+        <SwiperSlide>
+          <div className="flex h-[520px] items-center bg-emerald-700" />
+        </SwiperSlide>
+      </Swiper>
+    </section>
 
 
 
 
 
       {/* IMAGE + TEXT */}
-      <section className="mx-auto w-full max-w-6xl px-4 py-14">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-center">
-          <div className="w-full lg:w-1/2">
-            <div className="aspect-[4/3] w-full overflow-hidden bg-gray-100">
+     <section className="w-full bg-white pt-0 pb-16">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2">
+          {/* LEFT (IMAGE) */}
+          <div className="m-0 p-0">
+            {/* yüksekliği sabitleyip resmi büyütüyoruz */}
+            <div className="h-[580px] w-full max-w-[740px]">
               <img
-                alt="couple"
                 src={askImg}
+                alt="Hero"
                 className="h-full w-full object-cover"
               />
             </div>
           </div>
 
-          <div className="flex w-full flex-col items-center gap-4 text-center lg:w-1/2 lg:items-start lg:text-left">
-            <p className="text-xs font-semibold tracking-widest text-gray-400">SUMMER 2020</p>
-            <h4 className="text-2xl font-extrabold text-slate-900">
-              Part of the Neural Universe
-            </h4>
-            <p className="max-w-md text-sm text-gray-600">
-              We know how large objects will act, but things on a small scale.
+          {/* RIGHT (TEXT) */}
+          <div className="pt-8 md:pt-20">
+            <p className="text-xs font-semibold tracking-[0.2em] text-slate-400">
+              SUMMER 2020
             </p>
 
-            <div className="flex gap-3">
-              <button className="rounded-md bg-emerald-500 px-5 py-3 text-xs font-semibold text-white hover:opacity-90">
+            <h2 className="mt-4 text-4xl font-bold leading-tight text-slate-900">
+              Part of the Neural <br /> Universe
+            </h2>
+
+            <p className="mt-4 max-w-sm text-sm leading-6 text-slate-500">
+              We know how large objects will act,
+              <br />
+              but things on a small scale.
+            </p>
+
+            <div className="mt-7 flex gap-4">
+              <button className="rounded bg-emerald-500 px-8 py-3 text-xs font-bold text-white">
                 BUY NOW
               </button>
-              <button className="rounded-md border border-emerald-500 px-5 py-3 text-xs font-semibold text-emerald-600 hover:bg-emerald-50">
+
+              <button className="rounded border border-emerald-500 px-8 py-3 text-xs font-bold text-emerald-600">
                 READ MORE
               </button>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
    
-      <section className="w-full bg-gray-50">
-        <div className="mx-auto w-full max-w-6xl px-4 py-14">
-          <div className="flex flex-col items-center gap-2 text-center">
-            <p className="text-xs font-semibold text-sky-600">Practice Advice</p>
-            <h2 className="text-2xl font-extrabold text-slate-900">Featured Posts</h2>
-            <p className="text-xs text-gray-500">
-              Problems trying to resolve the conflict between the two major realms of Classical physics
-            </p>
+      <section className="w-full bg-white">
+  <div className="mx-auto w-full max-w-6xl px-4 py-16">
+    {/* Title */}
+    <div className="flex flex-col items-center gap-2 text-center">
+      <p className="text-xs font-semibold text-sky-600">Practice Advice</p>
+      <h2 className="text-3xl font-extrabold text-slate-900">Featured Posts</h2>
+      <p className="max-w-xl text-xs text-gray-500">
+        Problems trying to resolve the conflict between the two major realms of Classical physics
+      </p>
+    </div>
+
+    {/* Cards */}
+    <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3">
+      {[evImg, arabaImg, semsiyeImg].map((img, idx) => (
+        <article key={idx} className="overflow-hidden border bg-white shadow-sm">
+          
+          {/* Image */}
+          <div className="relative aspect-[16/9] w-full">
+            <img src={img} alt="post" className="h-full w-full object-cover" />
+
+            {/* NEW badge */}
+            <span className="absolute left-3 top-3 bg-red-500 px-3 py-1 text-[10px] font-bold text-white">
+              NEW
+            </span>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
-            {[
-              "Loudest à la Madison #1 (L’integral)",
-              "Loudest à la Madison #1 (L’integral)",
-              "Loudest à la Madison #1 (L’integral)",
-            ].map((t, idx) => (
-              <article key={idx} className="overflow-hidden border bg-white">
-                <div className="aspect-[16/9] w-full bg-gray-100">
-                  <img
-                    alt="post"
-                    src={[
-                      evImg,
-                      arabaImg,
-                      semsiyeImg,
-                    ][idx]}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="flex flex-col gap-2 p-4">
-                  <p className="text-xs text-gray-400">Google · Trending · New</p>
-                  <h3 className="text-sm font-semibold text-gray-900">{t}</h3>
-                  <p className="text-xs text-gray-600">
-                    We focus on ergonomics and meeting you where you work. It’s only a keystroke away.
-                  </p>
-                  <a href="#" className="text-xs font-semibold text-sky-600 hover:underline">
-                     Learn More
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+          {/* Content */}
+         <div className="flex flex-col gap-3 p-5">
+  <p className="text-xs">
+    <span className="text-sky-500">Google</span>
+    <span className="text-gray-400"> · Trending · New</span>
+  </p>
+
+  <h3 className="text-sm font-semibold text-gray-900">
+    Loudest à la Madison #1 (L’integral)
+  </h3>
+
+  <p className="text-xs text-gray-600">
+    We focus on ergonomics and meeting you where you work. It’s only a keystroke away.
+  </p>
+
+  {/* meta */}
+  <div className="flex justify-between text-xs text-gray-400">
+  <div className="flex items-center gap-2">
+    <BsAlarm className="text-sky-500" />
+    <span>22 April 2021</span>
+  </div>
+
+  <div className="flex items-center gap-2">
+    <BsGraphUp className="text-emerald-600" />
+    <span>10 comments</span>
+  </div>
+</div>
+
+
+
+  <a href="#" className="mt-2 text-xs font-semibold text-sky-600">
+    Learn More →
+  </a>
+</div>
+
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
     </div>
   );
 }

@@ -1,67 +1,122 @@
-import { Link, NavLink } from "react-router-dom";
-import { Search, ShoppingCart, Heart, Menu } from "lucide-react";
+// src/components/Header.jsx
+import {
+  FaPhoneAlt,
+  FaEnvelope,
+  FaInstagram,
+  FaYoutube,
+  FaFacebookF,
+  FaTwitter,
+  FaRegUser,
+  FaSearch,
+  FaShoppingCart,
+  FaRegHeart,
+} from "react-icons/fa";
 
 export default function Header() {
   return (
-    <header className="w-full border-b bg-white">
-      <div className="hidden w-full border-b bg-slate-900 text-white">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2 text-xs">
-          <p>(225) 555-0118 · michelle.rivera@example.com</p>
-          <p>Follow us and get a chance to win 80% off</p>
+    <header className="w-full">
+      {/* TOP BAR */}
+      <div className="bg-slate-900 text-white">
+        <div className="mx-auto flex h-12 max-w-6xl items-center justify-between px-6 text-xs">
+          {/* left */}
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2">
+              <FaPhoneAlt className="opacity-90" />
+              <span>(225) 555-0118</span>
+            </div>
+            <div className="hidden items-center gap-2 sm:flex">
+              <FaEnvelope className="opacity-90" />
+              <span>michelle.rivera@example.com</span>
+            </div>
+          </div>
+
+          {/* center */}
+          <div className="hidden text-center md:block">
+            Follow Us and get a chance to win 80% off
+          </div>
+
+          {/* right */}
           <div className="flex items-center gap-3">
-            <span>Follow Us :</span>
-            <span className="opacity-80">fb</span>
-            <span className="opacity-80">ig</span>
-            <span className="opacity-80">tw</span>
+            <span className="hidden sm:inline">Follow Us :</span>
+            <a href="#" aria-label="Instagram" className="hover:opacity-80">
+              <FaInstagram />
+            </a>
+            <a href="#" aria-label="Youtube" className="hover:opacity-80">
+              <FaYoutube />
+            </a>
+            <a href="#" aria-label="Facebook" className="hover:opacity-80">
+              <FaFacebookF />
+            </a>
+            <a href="#" aria-label="Twitter" className="hover:opacity-80">
+              <FaTwitter />
+            </a>
           </div>
         </div>
       </div>
 
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4">
-        <Link to="/" className="text-xl font-semibold">
-          Bandage
-        </Link>
+      {/* MAIN NAV */}
+      <div className="bg-white">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+          {/* logo */}
+          <div className="text-2xl font-bold text-slate-900">Bandage</div>
 
-        <nav className="hidden items-center gap-6 text-sm text-gray-700">
-          {[
-            ["Home", "/"],
-            ["Shop", "/shop"],
-            ["About", "/about"],
-            ["Contact", "/contact"],
-          ].map(([label, to]) => (
-            <NavLink
-              key={to}
-              to={to}
-              end={to === "/"}
-              className={({ isActive }) =>
-                `hover:text-black ${isActive ? "font-semibold text-black" : ""}`
-              }
-            >
-              {label}
-            </NavLink>
-          ))}
-        </nav>
+          {/* menu */}
+          <nav className="hidden items-center gap-6 text-sm font-medium text-slate-500 md:flex">
+            <a className="hover:text-slate-900" href="#">
+              Home
+            </a>
 
-        <div className="flex items-center gap-2">
-          <button className="rounded-lg p-2 hover:bg-gray-100 lg:hidden" aria-label="menu">
-            <Menu className="h-5 w-5" />
-          </button>
+            <div className="group relative">
+              <button className="flex items-center gap-1 hover:text-slate-900">
+                Shop <span className="text-xs">▾</span>
+              </button>
 
-          <div className="hidden items-center gap-1 text-sm text-sky-600 lg:flex">
-            <Link to="/login" className="hover:underline">Login</Link>
-            <span className="text-gray-400">/</span>
-            <Link to="/register" className="hover:underline">Register</Link>
+              {/* dropdown (istersen kaldır) */}
+              <div className="invisible absolute left-0 top-full mt-3 w-44 rounded-md border border-slate-200 bg-white p-2 opacity-0 shadow-sm transition group-hover:visible group-hover:opacity-100">
+                <a className="block rounded px-3 py-2 text-sm text-slate-600 hover:bg-slate-50" href="#">
+                  Shop Grid
+                </a>
+                <a className="block rounded px-3 py-2 text-sm text-slate-600 hover:bg-slate-50" href="#">
+                  Shop List
+                </a>
+              </div>
+            </div>
+
+            <a className="hover:text-slate-900" href="#">
+              About
+            </a>
+            <a className="hover:text-slate-900" href="#">
+              Blog
+            </a>
+            <a className="hover:text-slate-900" href="#">
+              Contact
+            </a>
+            <a className="hover:text-slate-900" href="#">
+              Pages
+            </a>
+          </nav>
+
+          {/* right actions */}
+          <div className="flex items-center gap-5 text-sky-500">
+            <a href="#" className="flex items-center gap-2 text-sm hover:opacity-80">
+              <FaRegUser />
+              <span className="hidden sm:inline">Login / Register</span>
+            </a>
+
+            <button aria-label="Search" className="hover:opacity-80">
+              <FaSearch />
+            </button>
+
+            <button aria-label="Cart" className="flex items-center gap-1 hover:opacity-80">
+              <FaShoppingCart />
+              <span className="text-xs text-slate-500">1</span>
+            </button>
+
+            <button aria-label="Favorites" className="flex items-center gap-1 hover:opacity-80">
+              <FaRegHeart />
+              <span className="text-xs text-slate-500">1</span>
+            </button>
           </div>
-
-          <button className="rounded-lg p-2 hover:bg-gray-100" aria-label="search">
-            <Search className="h-5 w-5 text-sky-600" />
-          </button>
-          <button className="rounded-lg p-2 hover:bg-gray-100" aria-label="cart">
-            <ShoppingCart className="h-5 w-5 text-sky-600" />
-          </button>
-          <button className="rounded-lg p-2 hover:bg-gray-100" aria-label="favorites">
-            <Heart className="h-5 w-5 text-sky-600" />
-          </button>
         </div>
       </div>
     </header>
