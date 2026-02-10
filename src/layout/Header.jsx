@@ -15,10 +15,10 @@ import {
 export default function Header() {
   return (
     <header className="w-full">
-      {/* TOP BAR */}
+    
       <div className="bg-slate-900 text-white">
         <div className="mx-auto flex h-12 max-w-6xl items-center justify-between px-6 text-xs">
-          {/* left */}
+          
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <FaPhoneAlt className="opacity-90" />
@@ -30,12 +30,12 @@ export default function Header() {
             </div>
           </div>
 
-          {/* center */}
+         
           <div className="hidden text-center md:block">
             Follow Us and get a chance to win 80% off
           </div>
 
-          {/* right */}
+        
           <div className="flex items-center gap-3">
             <span className="hidden sm:inline">Follow Us :</span>
             <a href="#" aria-label="Instagram" className="hover:opacity-80">
@@ -54,13 +54,13 @@ export default function Header() {
         </div>
       </div>
 
-      {/* MAIN NAV */}
+     
       <div className="bg-white">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-          {/* logo */}
+         
           <div className="text-2xl font-bold text-slate-900">Bandage</div>
 
-          {/* menu */}
+          
           <nav className="hidden items-center gap-6 text-sm font-medium text-slate-500 md:flex">
             <a className="hover:text-slate-900" href="#">
               Home
@@ -71,12 +71,18 @@ export default function Header() {
                 Shop <span className="text-xs">▾</span>
               </button>
 
-              {/* dropdown (istersen kaldır) */}
+              
               <div className="invisible absolute left-0 top-full mt-3 w-44 rounded-md border border-slate-200 bg-white p-2 opacity-0 shadow-sm transition group-hover:visible group-hover:opacity-100">
-                <a className="block rounded px-3 py-2 text-sm text-slate-600 hover:bg-slate-50" href="#">
+                <a
+                  className="block rounded px-3 py-2 text-sm text-slate-600 hover:bg-slate-50"
+                  href="#"
+                >
                   Shop Grid
                 </a>
-                <a className="block rounded px-3 py-2 text-sm text-slate-600 hover:bg-slate-50" href="#">
+                <a
+                  className="block rounded px-3 py-2 text-sm text-slate-600 hover:bg-slate-50"
+                  href="#"
+                >
                   Shop List
                 </a>
               </div>
@@ -96,9 +102,12 @@ export default function Header() {
             </a>
           </nav>
 
-          {/* right actions */}
+         
           <div className="flex items-center gap-5 text-sky-500">
-            <a href="#" className="flex items-center gap-2 text-sm hover:opacity-80">
+            <a
+              href="#"
+              className="flex items-center gap-2 text-sm hover:opacity-80"
+            >
               <FaRegUser />
               <span className="hidden sm:inline">Login / Register</span>
             </a>
@@ -107,12 +116,18 @@ export default function Header() {
               <FaSearch />
             </button>
 
-            <button aria-label="Cart" className="flex items-center gap-1 hover:opacity-80">
+            <button
+              aria-label="Cart"
+              className="flex items-center gap-1 hover:opacity-80"
+            >
               <FaShoppingCart />
               <span className="text-xs text-slate-500">1</span>
             </button>
 
-            <button aria-label="Favorites" className="flex items-center gap-1 hover:opacity-80">
+            <button
+              aria-label="Favorites"
+              className="flex items-center gap-1 hover:opacity-80"
+            >
               <FaRegHeart />
               <span className="text-xs text-slate-500">1</span>
             </button>

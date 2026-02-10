@@ -1,6 +1,12 @@
 import { Star } from "lucide-react";
 
-export default function ProductCard({ title, dept, priceOld, priceNew, image }) {
+export default function ProductCard({
+  title,
+  dept,
+  priceOld,
+  priceNew,
+  image,
+}) {
   return (
     <div className="flex flex-col items-center gap-3 bg-white p-4">
       <div className="aspect-[3/4] w-full overflow-hidden bg-gray-100">
