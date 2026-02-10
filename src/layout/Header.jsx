@@ -11,6 +11,7 @@ import {
   FaShoppingCart,
   FaRegHeart,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -61,45 +62,29 @@ export default function Header() {
           <div className="text-2xl font-bold text-slate-900">Bandage</div>
 
           
-          <nav className="hidden items-center gap-6 text-sm font-medium text-slate-500 md:flex">
-            <a className="hover:text-slate-900" href="#">
-              Home
-            </a>
-
-            <div className="group relative">
-              <button className="flex items-center gap-1 hover:text-slate-900">
-                Shop <span className="text-xs">▾</span>
-              </button>
-
-              
-              <div className="invisible absolute left-0 top-full mt-3 w-44 rounded-md border border-slate-200 bg-white p-2 opacity-0 shadow-sm transition group-hover:visible group-hover:opacity-100">
-                <a
-                  className="block rounded px-3 py-2 text-sm text-slate-600 hover:bg-slate-50"
-                  href="#"
-                >
-                  Shop Grid
-                </a>
-                <a
-                  className="block rounded px-3 py-2 text-sm text-slate-600 hover:bg-slate-50"
-                  href="#"
-                >
-                  Shop List
-                </a>
-              </div>
-            </div>
-
-            <a className="hover:text-slate-900" href="#">
-              About
-            </a>
-            <a className="hover:text-slate-900" href="#">
-              Blog
-            </a>
-            <a className="hover:text-slate-900" href="#">
-              Contact
-            </a>
-            <a className="hover:text-slate-900" href="#">
-              Pages
-            </a>
+            <nav className="hidden md:block">
+            <ul className="flex items-center gap-6 text-sm text-[#252B42]">
+              <li>
+                <Link to="/" className="hover:opacity-80">Home</Link>
+              </li>
+              <li>
+                
+                <Link to="/shop" className="hover:opacity-80">Shop</Link>
+              </li>
+              <li>
+                <Link to="/about" className="hover:opacity-80">About</Link>
+              </li>
+             
+               <li>
+                <Link to="/blog" className="hover:opacity-80">Blog</Link>
+              </li>
+               <li>
+                <Link to="/contact" className="hover:opacity-80">Contact</Link>
+              </li>
+               <li>
+                <Link to="/pages" className="hover:opacity-80">Pages</Link>
+              </li>
+            </ul>
           </nav>
 
          

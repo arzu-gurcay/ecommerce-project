@@ -3,6 +3,7 @@ import Header from "./layout/Header";
 import PageContent from "./layout/PageContent";
 import Footer from "./layout/Footer";
 import HomePage from "./pages/HomePage";
+import ShopPage from "./pages/ShopPage";
 
 function Placeholder({ title }) {
   return (
@@ -19,7 +20,7 @@ export default function App() {
       <PageContent>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/shop" element={<Placeholder title="Shop" />} />
+          <Route path="/shop" element={<ShopPage />} />
           <Route path="/about" element={<Placeholder title="About" />} />
           <Route path="/contact" element={<Placeholder title="Contact" />} />
         </Routes>
